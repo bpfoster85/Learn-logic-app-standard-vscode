@@ -40,4 +40,4 @@ steps:
         --parameters location=$(location) \
         --parameters logicAppName=$(logicappname) \
         --parameters appServicePlanName=$(aspname) \
-        --parameters storageName=$(storagenames)       
+        --parameters storageName=$(storagename)
