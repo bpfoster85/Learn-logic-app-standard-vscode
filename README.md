@@ -1,7 +1,12 @@
 # Learn-logic-app-standard-vscode
 A second interation of Logic Apps has been in the works for a bit now. It is know by a few names; Logic Apps V2, Logic Apps Single Tenant, Logic Apps Standard.
 
-
+- create resource group within azure first. This step will make moving forward much easier.
+```
+    az group create \
+        --name $(resourcegroupname) \
+        --location $(location)
+```
 
 - In multi-tenant Azure Logic Apps, ARM templates pose a challenge when you have to maintain environment variables for logic apps across across various dev, test, and production environments. Everything in an ARM template is defined at deployment. If you need to change just a single variable, you have to redeploy everything.
 
@@ -18,3 +23,6 @@ A second interation of Logic Apps has been in the works for a bit now. It is kno
 
 - Estimate Storage costs for workflow
     https://docs.microsoft.com/en-us/azure/logic-apps/estimate-storage-costs
+
+- Connectors
+    https://docs.microsoft.com/en-us/azure/logic-apps/devops-deployment-single-tenant-azure-logic-apps#managed-connectors-and-built-in-operations
