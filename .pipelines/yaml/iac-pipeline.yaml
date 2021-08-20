@@ -1,0 +1,44 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+- name: aspname
+  value: asp-la-std-demo
+- name: storagename
+  value: stlastddemo
+- name: logicappname
+  value: la-std-autoliv-demo
+- name: azureconn
+  value: logicappconn
+- name: resourcegroupname
+  value: rg-logicapp-standard-demo
+- name: location
+  value: westus
+- name: iacfile
+  value: logicapp.bicep
+
+steps:
+- task: AzureCLI@2
+  displayName: 'Deploy Bicep file'
+  inputs:
+    azureSubscription: 'logicappconn'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      # Creating a resource group
+      az group create \
+        --name $(resourcegroupname) \
+        --location $(location)
+      # Deploying Bicep file
+      az deployment group create \
+        --name deployLogicApp \
+        --resource-group $(resourcegroupname) \
+        --template-file $(Build.SourcesDirectory)/.iac/$(iacfile) \
+        --parameters location=$(location) \
+        --parameters logicAppName=$(logicappname) \
+        --parameters appServicePlanName=$(aspname) \
+        --parameters storageName=$(storagename) \
+       

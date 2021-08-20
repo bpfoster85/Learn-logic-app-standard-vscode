@@ -1,0 +1,26 @@
+# IaC variables
+
+variables:
+
+  projectName: 'logicappsample'
+  suffix: 'devw'
+
+  # TODO: Fill in with the name of your Azure service connection
+  devServiceConnection: ''
+
+  # Resource Group
+  resourceGroupLocation: 'westus'
+  resourceGroupName: 'rg-$(locationabbr)-$(projectName)-$(suffix)'
+
+  # Storage
+  storageName: 'sa$(projectName)$(suffix)'
+  appServicePlanName: 'asp$(projectName)$(suffix)'
+
+  #  Logic App
+  logicAppName: 'la-$(locationabbr)-$(projectName)-$(suffix)'
+
+  # API Connections
+  officeConnectionName: 'la-$(locationabbr)-$(projectName)-connection-office365'
+
+  # Project artifacts
+  logicAppCIArtifactName: 'logicapp_publish_artifact'

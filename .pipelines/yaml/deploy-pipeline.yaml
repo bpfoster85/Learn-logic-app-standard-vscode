@@ -1,0 +1,40 @@
+trigger: none
+
+pr: none
+
+variables:
+- name: logicappname
+  value: la-std-autoliv-demo
+- name: azureconn
+  value: logicappconn
+- name: artifactname
+  value: logicappWorkflows
+  
+resources:
+  pipelines:
+  - pipeline: cipipeline
+    source: 'BuildLogicAppWorkflow'
+    trigger:
+      branches:
+      - main
+
+jobs:
+- deployment: deploy_logicapp_resources
+  displayName: Deploy Logic App
+  pool:
+    vmImage: ubuntu-18.04
+  environment: dev
+  variables:
+    deploymentMode: 'Incremental'
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+        - task: AzureFunctionApp@1
+          displayName: 'Deploy logic app workflows'
+          inputs:
+            azureSubscription: $(azureconn)
+            appType: 'functionapp'
+            appName: $(logicappname)
+            package: '$(Pipeline.Workspace)/cipipeline/$(artifactname)/$(resources.pipeline.cipipeline.runID).zip'
+            deploymentMethod: 'zipDeploy'
