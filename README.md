@@ -14,7 +14,7 @@ A second interation of Logic Apps has been in the works for a bit now. It is kno
 - Overview of Single Tenant
     https://docs.microsoft.com/en-us/azure/logic-apps/single-tenant-overview-compare
 - Set up devops 
-     https://docs.microsoft.com/en-us/azure/logic-apps/set-up-devops-deployment-single-tenant-azure-logic-apps?tabs=github
+    https://docs.microsoft.com/en-us/azure/logic-apps/set-up-devops-deployment-single-tenant-azure-logic-apps?tabs=github
 
 - Estimate Storage costs for workflow
     https://docs.microsoft.com/en-us/azure/logic-apps/estimate-storage-costs
