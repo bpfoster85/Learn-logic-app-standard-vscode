@@ -24,7 +24,7 @@ steps:
 - task: AzureCLI@2
   displayName: 'Deploy Bicep file'
   inputs:
-    azureSubscription: 'logicappconn'
+    azureSubscription: 'Playground'
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
