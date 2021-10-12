@@ -43,8 +43,7 @@ jobs:
       run: |
         mkdir output
         cp 'host.json' 'output/'
-        cp ' wf_*/*' 'output/'
-        #cp 'proxies.json' 'output/'
+        cp 'wf_*\workflow.json' 'output/'
         cp 'connections.json' 'output/'
         cd output
         ls
