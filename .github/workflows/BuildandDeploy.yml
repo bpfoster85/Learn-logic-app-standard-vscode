@@ -37,7 +37,7 @@ jobs:
        with:
          inlineScript: |
           $profile = Get-AzWebAppPublishingProfile `
-              -ResourceGroupName ${{env.RG_NAME}}`
+              -ResourceGroupName ${{env.RG_NAME}} `
               -Name ${{env.LA_NAME}}
           $profile = $profile.Replace("`r", "").Replace("`n", "")
           Write-Output "::set-output name=profile::$profile"
