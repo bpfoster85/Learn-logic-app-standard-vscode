@@ -1,66 +1,57 @@
 name: build and deploy LA
 
-on: [push]
+on:
+  push:
+    branches: [ main ]
     
-        
-
-
-# CONFIGURATION
-# For help, go to https://github.com/Azure/Actions
-#
-# 1. Paste the RBAC json into the following secret in your repository:
-#   AZURE_RBAC_CREDENTIALS
-#
-# 2. Change these variables for your configuration:
-
+env:
+    RG_NAME: 'rg-salt-lake-azure-group'
+    LA_NAME: 'la-slag-demo'
 
 jobs:
-  build-and-deploy:
-    runs-on: windows-latest
+  Build:
+    runs-on: ubuntu-latest
     steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@master
-
-    - name: Login to Azure
-      uses: azure/login@v1
-      with:
+      - uses: actions/checkout@v2
+      - name: Easy Zip Files
+        uses: vimtor/action-zip@v1
+        with:
+          dest: ${{ github.run_id }}.zip
+          files: ./
+      - uses: actions/upload-artifact@master
+        with:
+          name: build-artifact
+          path: ${{ github.run_id }}.zip
+  Deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: [Build] 
+    steps:
+     - uses: azure/login@v1
+       with:
         creds: ${{secrets.CREDS_RG_SALT_LAKE_AZURE_GROUP}}
-        enable-AzPSSession: true 
-
-    - name: Get publish Profile
-      id: fncapp
-      uses: azure/powershell@v1
-      with:
-        inlineScript: |
+        enable-AzPSSession: true
+     - name: Get publish Profile
+       id: laapp
+       uses: azure/powershell@v1
+       with:
+         inlineScript: |
           $profile = Get-AzWebAppPublishingProfile `
-              -ResourceGroupName rg-salt-lake-azure-group `
-              -Name la-slag-demo
+              -ResourceGroupName ${{env.RG_NAME}}`
+              -Name ${{env.LA_NAME}}
           $profile = $profile.Replace("`r", "").Replace("`n", "")
           Write-Output "::set-output name=profile::$profile"
-        azPSVersion: latest
-        
-    - name: Create project folder
-      run: |
-        mkdir output
-        cp 'host.json' 'output/'
-        cp 'wf_*\workflow.json' 'output/'
-        cp 'connections.json' 'output/'
-        cd output/
-        ls
-    - name: Easy Zip Files
-      uses: vimtor/action-zip@v1
-      with:
-        dest: '${{ github.run_id }}.zip'
-        files: output/
-    - name: Check Directory Contents
-      run: |        
-        ls
-        
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1
-      id: fa
-      with:
-        app-name: 'la-slag-demo'
-        package: '${{ github.run_id }}.zip'
-        publish-profile: ${{steps.fncapp.outputs.profile}}  
-        
+         azPSVersion: latest
+
+     - uses: actions/download-artifact@master
+       with:
+        name: build-artifact
+        path: build-art/
+
+     - name: Deploy to Azure Logic App
+       uses: Azure/functions-action@v1
+       id: la
+       with:
+        app-name: ${{env.LA_NAME}}
+        package: build-art/${{ github.run_id }}.zip
+        publish-profile: ${{steps.laapp.outputs.profile}}
