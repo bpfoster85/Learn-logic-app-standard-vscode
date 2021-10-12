@@ -52,11 +52,16 @@ jobs:
         cp ' wf_*/*' 'output/'
         cp 'proxies.json' 'output/'
         cp 'connections.json' 'output/'
+        cd output
+        ls
     - name: Easy Zip Files
       uses: vimtor/action-zip@v1
       with:
         dest: '${{ github.run_id }}.zip'
         files: output/
+    - name: Check Directory Contents
+      run: |        
+        ls
         
     - name: 'Run Azure Functions Action'
       uses: Azure/functions-action@v1
