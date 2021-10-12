@@ -1,8 +1,6 @@
 name: build and deploy LA
 
-on:
-  push:
-    branches: [ main ]
+on: workflow_dispatch
     
 env:
     RG_NAME: 'rg-salt-lake-azure-group'
