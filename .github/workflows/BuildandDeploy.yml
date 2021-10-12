@@ -45,7 +45,7 @@ jobs:
         cp 'host.json' 'output/'
         cp 'wf_*\workflow.json' 'output/'
         cp 'connections.json' 'output/'
-        cd output
+        cd output/
         ls
     - name: Easy Zip Files
       uses: vimtor/action-zip@v1
