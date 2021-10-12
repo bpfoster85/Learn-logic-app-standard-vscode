@@ -18,7 +18,7 @@ jobs:
       uses: azure/arm-deploy@v1
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-        resourceGroupName: 'rg-salt-lake-user-group'
+        resourceGroupName: 'rg-salt-lake-azure-group'
         template: ./.iac/logicapp.bicep
         parameters: location=westus2 
                     logicAppName=la-slag-demo
