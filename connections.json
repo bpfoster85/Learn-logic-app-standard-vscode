@@ -27,6 +27,31 @@
         "scheme": "Key",
         "parameter": "@appsetting('office365_1-connectionKey')"
       }
+    },
+    "office365_2": {
+      "api": {
+        "id": "/subscriptions/82a26136-8b9b-4ec0-a93c-2bd399410909/providers/Microsoft.Web/locations/westus3/managedApis/office365"
+      },
+      "connection": {
+        "id": "/subscriptions/82a26136-8b9b-4ec0-a93c-2bd399410909/resourceGroups/rg-salt-lake-azure-group/providers/Microsoft.Web/connections/office365"
+      },
+      "connectionRuntimeUrl": "https://64482802935e22f3.10.common.logic-westus3.azure-apihub.net/apim/office365/714e4c160c6d4317b5c0f5eca1f66b38/",
+      "authentication": {
+        "type": "Raw",
+        "scheme": "Key",
+        "parameter": "@appsetting('office365_2-connectionKey')"
+      }
+    }
+  },
+  "serviceProviderConnections": {
+    "AzureBlob": {
+      "parameterValues": {
+        "connectionString": "@appsetting('AzureBlob_connectionString')"
+      },
+      "serviceProvider": {
+        "id": "/serviceProviders/AzureBlob"
+      },
+      "displayName": "BlobConnection"
     }
   }
 }
