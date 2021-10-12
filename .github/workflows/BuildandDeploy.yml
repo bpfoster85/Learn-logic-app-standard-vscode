@@ -2,12 +2,7 @@ name: build and deploy LA
 
 on:
   workflow_dispatch:
-    inputs:
-      ResourceGroupName:
-        description: 'Name of the Resource Group'
-        
-      LogicAppName:
-        description: 'Name of the Logic App'
+    
         
 
 
