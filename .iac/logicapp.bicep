@@ -13,7 +13,6 @@ param skuTier string = 'Standard'
 resource storageName_resource 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   sku: {
     name: skuName
-    tier: skuTier
   }
   kind: kind
   name: storageName
