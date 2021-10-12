@@ -5,10 +5,10 @@ on:
     inputs:
       ResourceGroupName:
         description: 'Name of the Resource Group'
-        required: true
+        
       LogicAppName:
         description: 'Name of the Logic App'
-        required: true
+        
 
 
 # CONFIGURATION
