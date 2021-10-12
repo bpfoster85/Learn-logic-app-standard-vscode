@@ -11,7 +11,7 @@ jobs:
       # Log into Azure
     - uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        creds: ${{ secrets.CREDS_RG_SALT_LAKE_AZURE_GROUP }}
 
       # Deploy Bicep file
     - name: deploy
@@ -19,6 +19,14 @@ jobs:
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
-        template: ./azuredeploy.bicep
-        parameters: storagePrefix=mystore
+        template: ./.iac/logicapp.bicep
+        parameters: location=westus2 
+                    logicAppName=la-slag-demo
+                    appServicePlanName=asp-la-slag-demo
+                    storageName=stlaslagdemo
         failOnStdErr: false
+
+
+
+ 
+ 
