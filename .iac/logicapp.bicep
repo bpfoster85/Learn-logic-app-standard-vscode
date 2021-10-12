@@ -8,7 +8,6 @@ param appServicePlanName string
 param storageName string
 param kind string = 'StorageV2'
 param skuName string = 'Standard_LRS'
-param skuTier string = 'Standard'
 
 resource storageName_resource 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   sku: {
