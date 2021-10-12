@@ -1,0 +1,68 @@
+name: build and deploy LA
+
+on:
+  workflow_dispatch:
+    inputs:
+      ResourceGroupName:
+        description: 'Name of the Resource Group'
+        required: true
+      LogicAppName:
+        description: 'Name of the Logic App'
+        required: true
+
+
+# CONFIGURATION
+# For help, go to https://github.com/Azure/Actions
+#
+# 1. Paste the RBAC json into the following secret in your repository:
+#   AZURE_RBAC_CREDENTIALS
+#
+# 2. Change these variables for your configuration:
+
+
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest
+    steps:
+    - name: 'Checkout GitHub Action'
+      uses: actions/checkout@master
+
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.CREDS_RG_SALT_LAKE_AZURE_GROUP}}
+        enable-AzPSSession: true 
+
+    - name: Get publish Profile
+      id: fncapp
+      uses: azure/powershell@v1
+      with:
+        inlineScript: |
+          $profile = Get-AzWebAppPublishingProfile `
+              -ResourceGroupName rg-salt-lake-azure-group `
+              -Name la-slag-demo
+          $profile = $profile.Replace("`r", "").Replace("`n", "")
+          Write-Output "::set-output name=profile::$profile"
+        azPSVersion: latest
+        
+    - name: Create project folder
+      run: |
+        mkdir output
+        cp 'host.json' 'output/'
+        cp ' wf_*/*' 'output/'
+        cp 'proxies.json' 'output/'
+        cp 'connections.json' 'output/'
+    - name: Easy Zip Files
+      uses: vimtor/action-zip@v1
+      with:
+        dest: '${{ github.run_id }}.zip'
+        files: output/
+        
+    - name: 'Run Azure Functions Action'
+      uses: Azure/functions-action@v1
+      id: fa
+      with:
+        app-name: ${{github.event.inputs.LogicAppName}}
+        package: '${{ github.run_id }}.zip'
+        publish-profile: ${{steps.fncapp.outputs.profile}}  
+        
