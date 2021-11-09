@@ -4,7 +4,7 @@ pr: none
 
 variables:
 - name: logicappname
-  value: la-std-autoliv-demo
+  value: la-std-slag-demo
 - name: azureconn
   value: logicappconn
 - name: artifactname
