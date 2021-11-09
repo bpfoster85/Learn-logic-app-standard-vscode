@@ -12,8 +12,8 @@ variables:
   
 resources:
   pipelines:
-  - pipeline: TP-BuildLogicApp
-    source: 'BuildLogicAppWorkflow'
+  - pipeline: cipipeline
+    source: 'TP-BuildLogicApp'
     trigger:
       branches:
       - main
