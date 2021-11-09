@@ -24,7 +24,7 @@ steps:
 - task: AzureCLI@2
   displayName: 'Deploy Bicep file'
   inputs:
-    azureSubscription: 'SVCCONN-RG-PROJU-MAIN'
+    azureSubscription: 'logicappconn'
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
