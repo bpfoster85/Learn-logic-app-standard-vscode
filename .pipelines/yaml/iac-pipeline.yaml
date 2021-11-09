@@ -12,7 +12,7 @@ variables:
 - name: logicappname
   value: la-std-slag-demo
 - name: azureconn
-  value: SVCCONN-RG-PROJU-MAIN
+  value: logicappconn
 - name: resourcegroupname
   value: rg-logicapp-standard-demo
 - name: location
