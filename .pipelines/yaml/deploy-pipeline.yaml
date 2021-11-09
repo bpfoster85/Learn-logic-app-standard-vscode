@@ -10,6 +10,14 @@ variables:
 - name: artifactname
   value: logicappWorkflows
   
+resources:
+  pipelines:
+  - pipeline: 'TP-BuildLogicApp'
+    source: 'BuildLogicAppWorkflow'
+    trigger:
+      branches:
+      - main
+
 jobs:
 - deployment: deploy_logicapp_resources
   displayName: Deploy Logic App
