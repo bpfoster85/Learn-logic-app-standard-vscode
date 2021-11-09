@@ -12,7 +12,7 @@ variables:
 - name: logicappname
   value: la-std-slag-demo
 - name: azureconn
-  value: logicappconn
+  value: SVCCONN-RG-PROJU-MAIN
 - name: resourcegroupname
   value: rg-logicapp-standard-demo
 - name: location
@@ -24,7 +24,7 @@ steps:
 - task: AzureCLI@2
   displayName: 'Deploy Bicep file'
   inputs:
-    azureSubscription: 'logicappconn'
+    azureSubscription: 'SVCCONN-RG-PROJU-MAIN'
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
