@@ -3,8 +3,8 @@ name: build and deploy LA
 on: workflow_dispatch
     
 env:
-    RG_NAME: 'rg-salt-lake-azure-group'
-    LA_NAME: 'la-slag-demo'
+    RG_NAME: 'openhackqj13fpm0rg'
+    LA_NAME: 'la-endpoint'
 
 jobs:
   Build:
@@ -27,7 +27,7 @@ jobs:
     steps:
      - uses: azure/login@v1
        with:
-        creds: ${{secrets.CREDS_RG_SALT_LAKE_AZURE_GROUP}}
+        creds: ${{secrets.Azure_Creds}}
         enable-AzPSSession: true
      - name: Get publish Profile
        id: laapp
