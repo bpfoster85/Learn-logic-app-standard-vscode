@@ -22,7 +22,7 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: 'openhackqj13fpm0rg'
         template: ./.iac/logicapp.bicep
-        parameters: location=westus2 
+        parameters: location=westus 
                     logicAppName=la-endpoint
                     appServicePlanName=asp-la-endpoint
                     storageName=stlaendpoint
