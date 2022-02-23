@@ -23,7 +23,7 @@ jobs:
         resourceGroupName: 'openhackqj13fpm0rg'
         template: ./.iac/logicapp.bicep
         parameters: location=westus 
-                    logicAppName=la-endpoint
+                    logicAppName=la-poc-endpoint
                     appServicePlanName=asp-la-endpoint
                     storageName=stlaendpoint
         failOnStdErr: false
