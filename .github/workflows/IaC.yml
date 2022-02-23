@@ -13,19 +13,19 @@ jobs:
       # Log into Azure
     - uses: azure/login@v1
       with:
-        creds: ${{ secrets.CREDS_RG_SALT_LAKE_AZURE_GROUP }}
+        creds: ${{ secrets.Azure_Creds }}
 
       # Deploy Bicep file
     - name: deploy
       uses: azure/arm-deploy@v1
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-        resourceGroupName: 'rg-salt-lake-azure-group'
+        resourceGroupName: 'openhackqj13fpm0rg'
         template: ./.iac/logicapp.bicep
         parameters: location=westus2 
-                    logicAppName=la-slag-demo
-                    appServicePlanName=asp-la-slag-demo
-                    storageName=stlaslagdemo
+                    logicAppName=la-endpoint
+                    appServicePlanName=asp-la-endpoint
+                    storageName=stlaendpoint
         failOnStdErr: false
 
 
