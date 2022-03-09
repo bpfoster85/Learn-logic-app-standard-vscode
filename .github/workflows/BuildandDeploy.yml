@@ -1,10 +1,16 @@
 name: build and deploy LA
 
-on: workflow_dispatch
+on: 
+    workflow_dispatch:
+        inputs:
+          logicAppName:
+            description: 'Logic App Name'     
+            required: true
+            default: 'la-default'
     
 env:
-    RG_NAME: 'openhackqj13fpm0rg'
-    LA_NAME: 'la-poc-endpoint'
+    RG_NAME: ${{ secrets.AZURE_RESOURCEGROUP }}
+    LA_NAME: ${{github.event.inputs.logicAppName}}
 
 jobs:
   Build:
