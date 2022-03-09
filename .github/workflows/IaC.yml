@@ -1,4 +1,4 @@
-name: Azure ARM
+name: IaC LA Architecture
 
 on: 
     workflow_dispatch:
