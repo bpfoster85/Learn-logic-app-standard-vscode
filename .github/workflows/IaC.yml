@@ -1,7 +1,20 @@
 name: Azure ARM
 
-on: workflow_dispatch 
-
+on: 
+    workflow_dispatch:
+        inputs:
+          logicAppName:
+            description: 'Logic App Name'     
+            required: true
+            default: 'la-default'
+          appServicePlanName:
+            description: 'App Service Name'     
+            required: true
+            default: 'asp-la-default'
+          storageAccountName:
+            description: 'Storage Account Name'     
+            required: true
+            default: 'stlaendpoint'
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -20,12 +33,12 @@ jobs:
       uses: azure/arm-deploy@v1
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-        resourceGroupName: 'openhackqj13fpm0rg'
+        resourceGroupName: ${{ secrets.AZURE_RESOURCEGROUP }}'
         template: ./.iac/logicapp.bicep
         parameters: location=westus 
-                    logicAppName=la-poc-endpoint
-                    appServicePlanName=asp-la-endpoint
-                    storageName=stlaendpoint
+                    logicAppName=${{github.event.inputs.logicAppName}}
+                    appServicePlanName=${{github.event.inputs.appServicePlanName}}
+                    storageName=${{github.event.inputs.storageAccountName}}
         failOnStdErr: false
 
 
