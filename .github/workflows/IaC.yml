@@ -33,7 +33,7 @@ jobs:
       uses: azure/arm-deploy@v1
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-        resourceGroupName: ${{ secrets.AZURE_RESOURCEGROUP }}'
+        resourceGroupName: ${{ secrets.AZURE_RESOURCEGROUP }}
         template: ./.iac/logicapp.bicep
         parameters: location=westus 
                     logicAppName=${{github.event.inputs.logicAppName}}
