@@ -1,47 +1,6 @@
 {
   "managedApiConnections": {
-    "office365": {
-      "api": {
-        "id": "/subscriptions/c7e621f9-196d-4830-b642-d0b351a6626a/providers/Microsoft.Web/locations/westus/managedApis/office365"
-      },
-      "connection": {
-        "id": "/subscriptions/c7e621f9-196d-4830-b642-d0b351a6626a/resourceGroups/logicapptestfoster/providers/Microsoft.Web/connections/office365"
-      },
-      "connectionRuntimeUrl": "https://d6aeba0f43878cd5.01.common.logic-westus.azure-apihub.net/apim/office365/10b065fed62c4908b503f6590e68d928/",
-      "authentication": {
-        "type": "Raw",
-        "scheme": "Key",
-        "parameter": "@appsetting('office365-connectionKey')"
-      }
-    },
-    "office365_1": {
-      "api": {
-        "id": "/subscriptions/c7e621f9-196d-4830-b642-d0b351a6626a/providers/Microsoft.Web/locations/westus/managedApis/office365"
-      },
-      "connection": {
-        "id": "/subscriptions/c7e621f9-196d-4830-b642-d0b351a6626a/resourceGroups/rg-logicapp-standard-demo/providers/Microsoft.Web/connections/office365"
-      },
-      "connectionRuntimeUrl": "https://d6aeba0f43878cd5.01.common.logic-westus.azure-apihub.net/apim/office365/6c84dddabb264a99b3cfde6148f17333/",
-      "authentication": {
-        "type": "Raw",
-        "scheme": "Key",
-        "parameter": "@appsetting('office365_1-connectionKey')"
-      }
-    },
-    "office365_2": {
-      "api": {
-        "id": "/subscriptions/82a26136-8b9b-4ec0-a93c-2bd399410909/providers/Microsoft.Web/locations/westus3/managedApis/office365"
-      },
-      "connection": {
-        "id": "/subscriptions/82a26136-8b9b-4ec0-a93c-2bd399410909/resourceGroups/rg-salt-lake-azure-group/providers/Microsoft.Web/connections/office365"
-      },
-      "connectionRuntimeUrl": "https://64482802935e22f3.10.common.logic-westus3.azure-apihub.net/apim/office365/714e4c160c6d4317b5c0f5eca1f66b38/",
-      "authentication": {
-        "type": "Raw",
-        "scheme": "Key",
-        "parameter": "@appsetting('office365_2-connectionKey')"
-      }
-    }
+
   },
   "serviceProviderConnections": {
     "AzureBlob": {
