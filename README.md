@@ -7,8 +7,7 @@ A second interation of Logic Apps has been in the works for a bit now. It is kno
         --name $(resourcegroupname) \
         --location $(location)
 ```
-- devops pipeline project: 
-    https://dev.azure.com/bryanfoster/bpfoster85-Learn-logic-app-standard-vscode
+
 
 
 - In multi-tenant Azure Logic Apps, ARM templates pose a challenge when you have to maintain environment variables for logic apps across across various dev, test, and production environments. Everything in an ARM template is defined at deployment. If you need to change just a single variable, you have to redeploy everything.
