@@ -58,7 +58,7 @@ resource logicAppName_resource 'Microsoft.Web/sites@2018-11-01' = {
         }
         {
           name: 'FUNCTIONS_EXTENSION_VERSION'
-          value: '~3'
+          value: '~4'
         }
         {
           name: 'FUNCTIONS_V2_COMPATIBILITY_MODE'
