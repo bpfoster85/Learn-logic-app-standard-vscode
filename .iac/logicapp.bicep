@@ -38,7 +38,6 @@ resource logicAppName_resource 'Microsoft.Web/sites@2018-11-01' = {
   properties: {
     serverFarmId: appServicePlanName_resource.id
     siteConfig: {
-      netFrameworkVersion: 'v4.6'
       appSettings: [
         {
           name: 'APP_KIND'
