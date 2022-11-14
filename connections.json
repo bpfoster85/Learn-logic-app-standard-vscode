@@ -1,7 +1,5 @@
 {
-  "managedApiConnections": {
-
-  },
+  "managedApiConnections": {},
   "serviceProviderConnections": {
     "AzureBlob": {
       "parameterValues": {
@@ -11,6 +9,15 @@
         "id": "/serviceProviders/AzureBlob"
       },
       "displayName": "BlobConnection"
+    },
+    "AzureCosmosDB": {
+      "parameterValues": {
+        "connectionString": "@appsetting('AzureCosmosDB_connectionString')"
+      },
+      "serviceProvider": {
+        "id": "/serviceProviders/AzureCosmosDB"
+      },
+      "displayName": "msftbfostercosmoscore"
     }
   }
 }
